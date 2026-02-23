@@ -1,4 +1,3 @@
-# CPP01
 
 Memory allocation, pointers to members, references, switch statement
 
@@ -76,3 +75,28 @@ Bu durumda:
 Nesne n(5); diyerek tek bir nesne oluşturabilirsiniz.
 
 Ancak Nesne* dizi = new Nesne[5]; dediğinizde kod derlenmez. Çünkü derleyici, bu 5 nesneyi oluştururken hangi x değerini kullanacağını bilemez ve "uygun bir varsayılan yapıcı bulunamadı" hatası verir.
+
+ex02: C++'da referans, halihazırda var olan bir değişkenin diğer adıdır (alias). Bir değişkene referans atadığında, artık o değişkene ulaşmak için iki farklı ismin olur.
+
+Kısa cevap: Hayır, C dilinde referans yoktur. C'de bir verinin adresine ulaşmak veya onu bir fonksiyona göndermek için sadece Pointer (İşaretçi) kullanabilirsin. Referanslar C++ ile birlikte hayatımıza girmiştir.
+
+Hadi referansı biraz daha yakından tanıyalım:
+
+1. Referansın Mantığı Nedir?
+
+Referansı bir insanın "lakabı" gibi düşünebilirsin. Örneğin, ismi "Ayşe" olan birine arkadaşları "A" diyorsa, her iki isim de aynı kişiyi temsil eder. "A"ya bir şey ikram edersen, "Ayşe" yemiş olur.
+
+2. Referans ve Pointer Arasındaki 3 Dev Fark
+
+C'den gelen biri için referans başta gereksiz görünebilir, ama şu farklar onu çok güçlü kılar:
+
+NULL Olamazlar: Bir referans oluşturduğun anda onu bir değişkene bağlamak zorundasın. int &ref; diyerek boş bırakamazsın. Pointerlar ise NULL olabilir.
+
+Adres Değiştiremezler: Bir referans bir değişkene bağlandığında, artık ölene kadar o değişkene aittir. Onu söküp başka bir değişkene bağlayamazsın. Pointerlar ise her an başka bir adresi gösterebilir.
+
+Sözdizimi (Syntax) Kolaylığı: Referansı kullanırken * veya -> gibi işaretlerle uğraşmazsın. Sanki normal bir değişkenmiş gibi davranır.
+
+3. C'de Neden Yok, C++'da Neden Var?
+
+C Dili: "Her şeyi açıkça yap" felsefesini savunur. Eğer bir adrese erişeceksen bunu işaretçi (*) ile yapmalısın.
+
