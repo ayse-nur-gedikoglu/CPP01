@@ -2,6 +2,8 @@
 # define WEAPON_HPP
 
 # include <string>
+# include "HumanA.hpp"
+# include "HumanB.hpp"
 
 class Weapon{
     private:
