@@ -125,3 +125,4 @@ Eğer üye bir nesne ise (ör. std::string _name), initializer-list doğrudan uy
 Neden HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)?
 _weapon bir referans olduğundan derleyiciye "bu referans hangi objeye bağlansın?" sorusu construction sırasında cevaplanmalı. Bunu ancak initializer-list ile verebilirsin. Constructor gövdesinde _weapon = weapon; yazsan bile bu derlemez (referanslara atama yapılamaz; zaten bağlı olmalıdır).
 _name(name) kısmı std::string için kopya ctor'u doğrudan çağırır. Bu C++98 ortamında const std::string& name alırsan kopyayı da azaltırsın. (Öneri: HumanA(const std::string& name, Weapon& weapon).)
+

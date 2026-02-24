@@ -40,7 +40,7 @@ int main(int argc, char **argv)
             line.insert(pos, to);
             pos += to.length();
         }
-        dest << line << std::endl;
+        dest << line << '\n';
     }
     src.close();
     dest.close();
@@ -56,3 +56,4 @@ int main(int argc, char **argv)
 //bir satır okur ve onu bir string'e atar.
 
 //find aradıgı seyi bulmazsa npos döner. bulubamadı deme
+//find(aranan, baslangıc pozisyonu)

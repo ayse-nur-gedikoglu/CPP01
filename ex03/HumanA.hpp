@@ -12,7 +12,7 @@ class HumanA{
         void attack();
 };
 
-//humanA destructarda silahı alıyor. yani ref ile çalışıyor
-//humanB almıyor yani pointer ile çalışıyor
+//humanA silahı alıyor. yani ref ile çalışıyor
+//humanB silahı almıyor yani pointer ile çalışıyor
 
 #endif

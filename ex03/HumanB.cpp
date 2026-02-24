@@ -1,9 +1,12 @@
 #include "HumanB.hpp"
 #include <iostream>
 
+//Member initializer list ile baslatıldı
 HumanB::HumanB(const std::string& name) : _name(name), _weapon(NULL)
 {
 }
+//Bu yöntem daha verimli çünkü bu şekilde _name direkt olarak olusturuluyor.
+//Verimsiz yöntemde bir str oluşturuluyor ve buna atanıyor, fazladan hafıza kullanımı.
 
 void HumanB::setWeapon(Weapon &weapon)
 {
