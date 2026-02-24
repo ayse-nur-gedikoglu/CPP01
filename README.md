@@ -100,3 +100,28 @@ Sözdizimi (Syntax) Kolaylığı: Referansı kullanırken * veya -> gibi işaret
 
 C Dili: "Her şeyi açıkça yap" felsefesini savunur. Eğer bir adrese erişeceksen bunu işaretçi (*) ile yapmalısın.
 
+ex03: 1. HumanA: Silahına "Bağımlı" (Reference)
+
+HumanA'nın kuralı şu: Her zaman bir silahı olmalı.
+
+Neden Referans? Az önce konuştuğumuz gibi; referanslar asla NULL olamaz ve bir kez bağlandılar mı değiştirilemezler. HumanA doğarken silahını alır ve o silah onun bir parçası (takma adı gibi) olur.
+
+Constructor: Silahı mutlaka constructor içinde almalısın: HumanA(std::string name, Weapon &weapon).
+
+2. HumanB: Silahı "Tercih" (Pointer)
+
+HumanB'nin kuralı şu: Silahı olabilir de, olmayabilir de.
+
+Neden Pointer? Çünkü pointerlar NULL (veya nullptr) olabilir. Eğer HumanB'nin silahı yoksa, silah işaretçisi "boşluğu" gösterebilir. Ayrıca silah sonradan setWeapon ile değiştirilebilir.
+
+Attribute: Sınıf içinde silahı Weapon *weapon; şeklinde tutmalısın.
+
+NEDİR YA BU İNİTİALİZER LİST
+
+Mantığı (kısa)
+Referanslar (ör. Weapon& _weapon) oluşturulurken bağlanmak zorundadır; sonradan "atama" ile değiştiremezsin. Bu yüzden binding (bağlama) constructor initializer list içinde yapılır.
+İnisiyalizer-list, üye nesneleri/referansları constructor gövdesi çalışmadan önce doğrudan doğruya başlatır. Bu, referanslar, const üyeler ve sınıf tipleri için gereklidir/etkilidir.
+Eğer üye bir nesne ise (ör. std::string _name), initializer-list doğrudan uygun ctor'u çağırır. Constructor gövdesinde atama yaparsan önce varsayılan ctor çalışır, sonra atama (copy/assign) gerçekleşir — ekstra maliyet.
+Neden HumanA::HumanA(std::string name, Weapon& weapon) : _name(name), _weapon(weapon)?
+_weapon bir referans olduğundan derleyiciye "bu referans hangi objeye bağlansın?" sorusu construction sırasında cevaplanmalı. Bunu ancak initializer-list ile verebilirsin. Constructor gövdesinde _weapon = weapon; yazsan bile bu derlemez (referanslara atama yapılamaz; zaten bağlı olmalıdır).
+_name(name) kısmı std::string için kopya ctor'u doğrudan çağırır. Bu C++98 ortamında const std::string& name alırsan kopyayı da azaltırsın. (Öneri: HumanA(const std::string& name, Weapon& weapon).)

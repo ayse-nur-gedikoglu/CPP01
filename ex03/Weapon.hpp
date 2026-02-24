@@ -2,8 +2,7 @@
 # define WEAPON_HPP
 
 # include <string>
-# include "HumanA.hpp"
-# include "HumanB.hpp"
+# include <iostream>
 
 class Weapon{
     private:
