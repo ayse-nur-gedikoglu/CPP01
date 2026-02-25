@@ -9,8 +9,6 @@ class Weapon{
     public:
         Weapon(std::string type);
         const std::string& getType(void) const;
-        // sondaki const methodun kendisinin const oldugunu gosterir.
-        // Yani bu method icerideki degiskenleri degistirmez.
         void setType(std::string type);
 };
 

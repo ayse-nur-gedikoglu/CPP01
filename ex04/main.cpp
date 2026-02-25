@@ -1,5 +1,5 @@
 #include <iostream>
-#include <fstream> //dosya islemleri icin
+#include <fstream>
 #include <string>
 
 int main(int argc, char **argv)
@@ -10,7 +10,7 @@ int main(int argc, char **argv)
         return 1;
     }
     std::string file = argv[1];
-    std::string from = argv[2]; //bu stringin yerine to konacak
+    std::string from = argv[2];
     std::string to = argv[3];
     if (from.empty())
     {
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
     }
     size_t pos;
     std::string line;
-    while (std::getline(src, line)) //nereden okuyacak, nereye yazacak
+    while (std::getline(src, line))
     {
         pos = 0;
         while ((pos = line.find(from, pos)) != std::string::npos)
@@ -46,14 +46,3 @@ int main(int argc, char **argv)
     dest.close();
     return 0;
 }
-//3 parametre alacak
-//./file_replace <file> <string1> <string2>
-//string1 yerine string2 koyacak
-//`std::string` sınıfının tüm üye fonksiyonlarına izin verilir, `replace` fonksiyonu hariç.
-
-//eğer ofstream olan bir dosya adına calıstırılırsa üstüne yazar.
-//std::getline dosyadan (veya herhangi bir stream'den) 
-//bir satır okur ve onu bir string'e atar.
-
-//find aradıgı seyi bulmazsa npos döner. bulubamadı deme
-//find(aranan, baslangıc pozisyonu)
